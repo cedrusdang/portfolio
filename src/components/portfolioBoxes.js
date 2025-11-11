@@ -15,7 +15,7 @@ import { useContext } from 'react';
 
 export default function PortfolioBoxes() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const { setMainSwiper, selectedSlide } = useContext(SwiperContext);
+  const { setMainSwiper } = useContext(SwiperContext);
   // Make the number of slides per view and other options flexible via props or defaults
   // Accept props for configuration, fallback to sensible defaults
   return (
