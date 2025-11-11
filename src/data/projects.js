@@ -5,6 +5,42 @@
 
 const projects = [
   {
+    title: "Explainable Natural Language Query Interface for Relational Databases Using a Multi-Agent System",
+    subheader: "UWA | CITS5553 Data Science Capstone | Semester 2, 2025",
+    image: `${process.env.PUBLIC_URL}/projectImages/nl2sql.png`,
+    description: "An explainable natural language to SQL querying system built using a multi-agent architecture enabling users to query relational databases without writing SQL.",
+    techStack: "Multi-Agent Systems | RAG | LangChain | Python | Django | Next.js | SQLite | Docker",
+    expandDescription: "Developed a 3-agent reasoning pipeline capable of selecting relevant databases, identifying candidate tables, and generating executable SQL queries with step-by-step explainability. Implemented schema extraction, retrieval-augmented generation (RAG), similarity-based schema ranking, and interactive schema visualization. Achieved strong semantic SQL quality metrics across the Spider benchmark dataset.",
+    githubURL: "https://github.com/cedrusdang/explainable-nl-query-db-agents"
+  },
+  {
+    title: "Smart Livestock Tracking System - IoT",
+    subheader: "UWA | Jul-Nov 2024 | Awarded: High Distinction",
+    image: `${process.env.PUBLIC_URL}/projectImages/iotproject.png`,
+    description: "IoT-based livestock tracking with GPS, LoRaWAN, AWS, geofencing, and embedded systems for precision agriculture and real-time alerts.",
+    techStack: "LoRaWAN | MQTT | AWS | Python | GPS | ESP32 | Geofencing | Web Apps",
+    expandDescription: "Designed and field-tested GPS+LoRaWAN devices with geofencing, real-time alerting, 50-day battery, 1km range, 99% accuracy. Scalable and cost-effective solution for farm security and operations. Skills: IoT, Embedded, Cloud, Web, Agriculture Tech.",
+    githubURL: "https://github.com/cedrusdang/IoT_UWA_Project_G22"
+  },
+  {
+    title: "Image Classification with CNNs and MobileNetV3Small",
+    subheader: "UWA | Aug 2025 | Awarded: High Distinction",
+    image: `${process.env.PUBLIC_URL}/projectImages/dl_cnn.png`,
+    description: "Implemented and optimized convolutional neural networks for image classification, focusing on accuracy, regularization, and model generalization.",
+    techStack: "Python | CNN | Deep Learning | Computer Vision",
+    expandDescription: "Developed a CNN model for image classification using techniques such as data augmentation, dropout, learning rate scheduling, and batch normalization to improve generalization. Conducted experiments to compare different architectures and evaluate model robustness.",
+    githubURL: "https://github.com/cedrusdang/Cedrus_Dang_DL_UWA"
+  },
+  {
+    title: "GRU-Based Western Australian Temperature Forecasting and VAE Sequence Generation",
+    subheader: "UWA | Oct 2025 | Awarded: High Distinction",
+    image: `${process.env.PUBLIC_URL}/projectImages/dl_temp.png`,
+    description: "Deep learning models for temperature forecasting and synthetic sequence generation using GRU and VAE architectures on Western Australian climate data.",
+    techStack: "Python | Deep Learning | Time Series Prediction | VAE | GRU",
+    expandDescription: "Built multi-layer GRU forecasting models to predict seasonal temperature patterns across Western Australia, and developed a Variational Autoencoder (VAE) to generate realistic synthetic climate sequences. Evaluated forecasting stability over multiple horizons and analyzed seasonal trend consistency.",
+    githubURL: "https://github.com/cedrusdang/Cedrus_Dang_DL_UWA"
+  },
+  {
     title: "Little Lemon Restaurant - React Front-End App",
     subheader: "Meta Front-End Developer Professional Certificate | 2025",
     image: `${process.env.PUBLIC_URL}/projectImages/littlelemon.png`,
@@ -15,7 +51,7 @@ const projects = [
   },
   {
     title: "Graph Database Project: Australian Road Fatality 2024",
-    subheader: "UWA | Apr–May 2025 | Awarded: High Distinction",
+    subheader: "UWA | Apr-May 2025 | Awarded: High Distinction",
     image: `${process.env.PUBLIC_URL}/projectImages/graphwarehouse.png`,
     description: "Graph-based analytical pipeline using Neo4j for national road crash fatality analysis, adopting dimensional snowflake schema and Cypher queries.",
     techStack: "Neo4j | Python | Cypher",
@@ -24,7 +60,7 @@ const projects = [
   },
   {
     title: "Data Warehouse Project: Australian Road Fatality 2024",
-    subheader: "UWA | Mar–Apr 2025 | Awarded: High Distinction",
+    subheader: "UWA | Mar-Apr 2025 | Awarded: High Distinction",
     image: `${process.env.PUBLIC_URL}/projectImages/datawarehouse.png`,
     description: "Scalable data warehouse using Kimball’s dimensional modelling to support OLAP and advanced analytics on 2024 road fatality data.",
     techStack: "PostgreSQL | Python | Power BI",
@@ -41,33 +77,23 @@ const projects = [
     githubURL: "https://github.com/cedrusdang/NovelForger"
   },
   {
-    title: "Queensland Traffic Accidents Analysis (2001–2021)",
-    subheader: "UWA | Jul–Nov 2024 | Awarded: High Distinction",
+    title: "Queensland Traffic Accidents Analysis (2001-2021)",
+    subheader: "UWA | Jul-Nov 2024 | Awarded: High Distinction",
     image: `${process.env.PUBLIC_URL}/projectImages/datastorytelling.png`,
-    description: "Comprehensive analysis of Queensland traffic accident data (2001–2021) for trend discovery, underreporting, and actionable safety insights.",
+    description: "Comprehensive analysis of Queensland traffic accident data (2001-2021) for trend discovery, underreporting, and actionable safety insights.",
     techStack: "Tableau | Tableau Prep",
     expandDescription: "Analyzed 20 years of accident data, identified critical patterns, population-growth effects, and underreported fatigue-related incidents. Recommended AI-driven models and public awareness campaigns for policy impact and operational adjustment. Skills: Data Analysis, Data Storytelling, Business Analysis, Policy Analytics.",
     githubURL: "https://github.com/cedrusdang/DataStoryTelling"
   },
   {
-    title: "Smart Livestock Tracking System - IoT",
-    subheader: "UWA | Jul–Nov 2024 | Awarded: High Distinction",
-    image: `${process.env.PUBLIC_URL}/projectImages/iotproject.png`,
-    description: "IoT-based livestock tracking with GPS, LoRaWAN, AWS, geofencing, and embedded systems for precision agriculture and real-time alerts.",
-    techStack: "LoRaWAN | MQTT | AWS | Python | GPS | ESP32 | Geofencing | Web Apps",
-    expandDescription: "Designed and field-tested GPS+LoRaWAN devices with geofencing, real-time alerting, 50-day battery, 1km range, 99% accuracy. Scalable and cost-effective solution for farm security and operations. Skills: IoT, Embedded, Cloud, Web, Agriculture Tech.",
-    githubURL: "https://github.com/cedrusdang/IoT_UWA_Project_G22"
-  },
-  {
     title: "Classification and Clustering of Low Birth Weight Mortality",
-    subheader: "UWA | Sep–Oct 2024 | Awarded: High Distinction",
+    subheader: "UWA | Sep-Oct 2024 | Awarded: High Distinction",
     image: `${process.env.PUBLIC_URL}/projectImages/cdaproject.png`,
     description: "Machine learning classification and clustering on global low birth weight mortality using health and economic data.",
     techStack: "R | Machine Learning | Shiny",
     expandDescription: "Conducted EDA and feature selection, built classification models (Decision Tree 96%, Naive Bayes 94%), used RFE and cross-validation, and implemented hierarchical clustering to reveal risk and socioeconomic patterns. Skills: ML, Data Science, Public Health Analytics.",
     githubURL: "https://github.com/cedrusdang/CDA_Project"
-  },
-  // Add more projects here following the same structure
+  }
 ];
 
 export default projects;

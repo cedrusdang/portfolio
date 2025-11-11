@@ -10,6 +10,11 @@ import IntroBox from '../components/introBox.js';
 import MottoBox from '../components/mottoBox.js';
 import MyEmail from '../components/myEmail.js';
 import LiveProject from '../components/liveProject.js';
+import ProjectList from '../components/projectList.js';
+import { createContext, useState } from "react";
+
+// Shared Swiper context for referencing in projectList.js
+export const SwiperContext = createContext(null);
 
 function LeftBox(){
   return (
@@ -29,16 +34,29 @@ function LeftBox(){
 }
 
 function RightBox(){
+  const [mainSwiper, setMainSwiper] = useState(null);
+  const [selectedSlide, setSelectedSlide] = useState(null);
+
   return (
-    <>
+    <SwiperContext.Provider
+      value={{
+        mainSwiper,
+        setMainSwiper,
+        selectedSlide,
+        setSelectedSlide
+      }}
+    >
       <MottoBox/>
       <Box>
         <IntroBox/>
       </Box>
       <Box>
+        <ProjectList/>
+      </Box>
+      <Box>
         <PortfolioBoxes/>
       </Box>
-    </>
+    </SwiperContext.Provider>
   );
 }
 

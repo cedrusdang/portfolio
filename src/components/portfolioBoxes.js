@@ -9,20 +9,22 @@ import { FreeMode, Navigation, Thumbs, Autoplay } from 'swiper/modules';
 import Box from '@mui/material/Box';
 import ReviewCard from './projectCard.js';
 import projects from '../data/projects.js';
+import { SwiperContext } from '../views/home.js';
+
+import { useContext } from 'react';
 
 export default function PortfolioBoxes() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-
+  const { setMainSwiper, selectedSlide } = useContext(SwiperContext);
   // Make the number of slides per view and other options flexible via props or defaults
   // Accept props for configuration, fallback to sensible defaults
   return (
     <>
-
         <Swiper
+          onSwiper={setMainSwiper}
           autoplay={{
             delay: 5000,
           }}
-
           loop={true}
           spaceBetween={10}
           navigation={true}
@@ -34,8 +36,12 @@ export default function PortfolioBoxes() {
         >
           <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
             {projects.map((proj, idx) => (
-              <SwiperSlide key={idx} >
-                <Box elevation={5}  /* Add elevation for 3D effect */>
+              <SwiperSlide id={`project-card-${idx}`} key={idx} >
+                <Box elevation={5}  /* Add elevation for 3D effect */
+                  sx={{
+                    transition: 'transform 0.2s ease-in-out',
+                  }}
+                >
                   <ReviewCard
                     title={proj.title}
                     subheader={proj.subheader}

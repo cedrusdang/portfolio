@@ -1,7 +1,7 @@
 export const LeftBoxIntro = `
 MS in Data Science (UWA) 
-| Aspiring Full-Stack AI/Data Engineer & Scientist 
-| Passionate about AI, ML, Data Science & Engineering 
+| Aspiring AI Engineer & Data Scientist
+| AI, ML, DL and Statistics Enthusiast
 `;
 
 export const skillSets = [
@@ -15,7 +15,7 @@ export const skillSets = [
     },
     {
         "category": "Programming Languages",
-        "skills": "Python|R|C/C++|Bash/Shell|SQL/Cypher|HTML|CSS|JavaScript"
+        "skills": "Python|R|C/C++|Bash/Shell|SQL/Cypher|HTML|CSS|JavaScript|TypeScript"
     },
     {
         "category": "Tools & Platforms",
@@ -23,7 +23,7 @@ export const skillSets = [
     },
     {
         "category": "Libraries & Frameworks",
-        "skills": "NumPy|Pandas|Scikit-learn|Matplotlib|Seaborn|TensorFlow|PyTorch|LangChain|AIGen API Engineering|React|Django|Flask"
+        "skills": "NumPy|Pandas|Scikit-learn|Matplotlib|Seaborn|TensorFlow|PyTorch|LangChain|AIGen API Engineering|React|Next.js|Django|Flask"
     },
     {
         "category": "Economics & Statistics",
