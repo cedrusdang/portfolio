@@ -31,7 +31,7 @@ function AppGlobalStyles() {
 
 function App() {
   // Dark mode state and theme creation
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
   const theme = useMemo(
     () =>
       createTheme({
