@@ -1,7 +1,5 @@
 export const LeftBoxIntro = `
-MS in Data Science (UWA) 
-| Aspiring AI Engineer & Data Scientist
-| AI, ML, DL and Statistics Enthusiast
+AI & Data Engineer | Data Scientist | Machine Learning & Data Engineering
 `;
 
 export const skillSets = [
