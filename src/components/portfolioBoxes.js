@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './portfolioBoxes.css';
 import Box from '@mui/material/Box';
 import ReviewCard from './projectCard.js';
