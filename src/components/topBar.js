@@ -50,7 +50,7 @@ function TopLogoIcon() {
         mr: '14px',
         transition: 'transform 1.5s cubic-bezier(.4,2,.6,1)',
         transformStyle: 'preserve-3d',
-        cursor: 'none',
+        cursor: 'pointer',
         '&:hover': { transform: 'rotateY(180deg) rotateX(30deg)' },
       }}
     />
@@ -65,12 +65,12 @@ function TopNameOwner({ isSmall }) {
       component={Link}
       to="/"
       sx={theme => ({
-        fontWeight: 800,
-        color: theme.palette.mode === 'dark' ? '#f3f6fa' : '#222',
+        fontWeight: 700,
+        color: theme.palette.text.primary,
         fontSize,
-        letterSpacing: 0,
+        letterSpacing: '0.01em',
         textDecoration: 'none',
-        fontFamily: 'Inter, monospace',
+        fontFamily: '"Fraunces", serif',
       })}
     >
       {ownerName}
@@ -84,11 +84,11 @@ function TopPortfolioIntro() {
       component="a"
       sx={theme => ({
         fontWeight: 500,
-        color: theme.palette.mode === 'dark' ? '#e0e4ea' : '#222',
-        fontSize: 22,
+        color: theme.palette.text.secondary,
+        fontSize: 20,
         letterSpacing: 0,
         textDecoration: 'none',
-        fontFamily: '"Times New Roman", Times, serif',
+        fontFamily: '"Manrope", sans-serif',
         ml: 2
       })}
     >
@@ -109,7 +109,7 @@ export default function TopAppBar({darkMode, setDarkMode}) {
       position="static"
       elevation={0}
       sx={theme => ({
-        bgcolor: theme.palette.background.default,
+        bgcolor: theme.palette.background.paper,
         borderBottom: '1px solid',
         borderColor: theme.palette.divider,
         color: theme.palette.text.primary,

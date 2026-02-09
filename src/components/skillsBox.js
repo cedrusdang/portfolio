@@ -109,7 +109,9 @@ function SkillsCards() {
   return (
     <StyledPaper>  
         <StyledPaper>
-          <h3 style={{ margin: "0 0 0.25rem 0" }}>My Skills</h3>
+          <Typography variant="h6" sx={{ mb: 0.5, fontWeight: 600 }}>
+            My Skills
+          </Typography>
           <SkillsSwiper />
       </StyledPaper>
     </StyledPaper>

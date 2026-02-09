@@ -1,33 +1,34 @@
 export const LeftBoxIntro = `
-AI & Data Engineer | Data Scientist | Machine Learning & Data Engineering
+Data Analyst | Business & Systems Analysis | Analytics & Automation
 `;
 
 export const skillSets = [
-    {
-        "category": "Data Science",
-        "skills": "Machine Learning|Deep Learning|NLP|Computer Vision|Data Analysis|Data Storytelling"
-    },
-    {
-        "category": "Data Engineering",
-        "skills": "Data ETL|Data Warehousing|Cloud Computing|IoT|Web Development"
-    },
-    {
-        "category": "Programming Languages",
-        "skills": "Python|R|C/C++|Bash/Shell|SQL/Cypher|HTML|CSS|JavaScript|TypeScript"
-    },
-    {
-        "category": "Tools & Platforms",
-        "skills": "JupyterLab|Power BI/Tableau|MySQL|PostgreSQL|Neo4j|Linux|GitHub|Docker|AWS"
-    },
-    {
-        "category": "Libraries & Frameworks",
-        "skills": "NumPy|Pandas|Scikit-learn|Matplotlib|Seaborn|TensorFlow|PyTorch|LangChain|AIGen API Engineering|React|Next.js|Django|Flask"
-    },
-    {
-        "category": "Economics & Statistics",
-        "skills": "Statistical Analysis|Financial Analysis|Logistics & Supply Chain"
-    }
+  {
+    category: "SQL & Data Management",
+    skills: "SQL|PostgreSQL|MySQL|ETL|Data Modelling|Data Warehousing",
+  },
+  {
+    category: "Data Processing & Automation",
+    skills: "Python|Bash/Shell|Pandas|NumPy|REST APIs|GitHub",
+  },
+  {
+    category: "Reporting & Visualisation",
+    skills: "Power BI|Tableau|Excel",
+  },
+  {
+    category: "Data Analysis",
+    skills: "Data Validation|Data Cleaning|Exploratory Analysis|Operational Reporting",
+  },
+  {
+    category: "Business & Operations Analysis",
+    skills: "Process Optimisation|Logistics & Supply Chain Analysis|Cost Analysis|Systems Analysis",
+  },
+  {
+    category: "Advanced Analytics",
+    skills: "Statistical Modelling|Machine Learning|NLP|Bayesian Methods",
+  },
 ];
+
 
 export const mottos = [
   `"The only thing we have to fear is fear itself."\nFranklin D. Roosevelt`,
@@ -37,14 +38,3 @@ export const mottos = [
   `"I propose to consider the question, 'Can machines think?' " \nAlan Turing`,
   `"The value of an idea lies in the using of it."\nThomas Edison`,
 ];
-
-export const RightBoxIntro = `I am passionate about science, technology, and analysis. 
-
-My journey began in environmental science and economics, then advanced through roles in business analysis and supply chain management. 
-
-Today, I specialize in Data Science and AI, building intelligent products, machine learning models, and analytical dashboards.
-
-Beyond coding, I value exploring nature, meaningful conversations, and making a positive impact on people’s lives. 
-
-I am committed to using technology and analytics to drive real-world change.`;
-

@@ -92,8 +92,9 @@ function TypingEffect({ text, speed, onPhaseChange }) {
       sx={{
         textAlign: 'center',
         whiteSpace: 'pre-line',
-        fontFamily: '"Dancing Script", cursive', // Add font family for dancing effect
-        letterSpacing: '0.04em',
+        fontFamily: '"Fraunces", serif',
+        letterSpacing: '0.02em',
+        color: 'text.secondary',
       }}
     >
       {displayed}
@@ -109,7 +110,7 @@ export default function RotatingMottos({ speed = 60 }) {
   const handlePhaseChange = () => setIndex(i => (i + 1) % mottos.length);
 
   return (
-    <Box sx={{padding: '0 0.5rem 0.5rem 0.5rem'}}>
+    <Box sx={{padding: '0'}}>
       <Box
         sx={{
           height: { xs: '8rem', sm: '6rem'},

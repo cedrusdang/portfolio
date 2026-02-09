@@ -6,15 +6,8 @@ import Grid from '@mui/material/Grid';
 import PortfolioBoxes from '../components/portfolioBoxes.js';
 import AvatarBox from '../components/avatarBox.js';
 import SkillsBox from '../components/skillsBox.js';
-import IntroBox from '../components/introBox.js';
 import MottoBox from '../components/mottoBox.js';
 import MyEmail from '../components/myEmail.js';
-import LiveProject from '../components/liveProject.js';
-import ProjectList from '../components/projectList.js';
-import { createContext, useState } from "react";
-
-// Shared Swiper context for referencing in projectList.js
-export const SwiperContext = createContext(null);
 
 function LeftBox(){
   return (
@@ -27,45 +20,28 @@ function LeftBox(){
       </Box>
       <MyEmail/>
       <Box sx={{marginTop: '1rem'}}>
-        <LiveProject/>
       </Box>
     </>
   );
 }
 
 function RightBox(){
-  const [mainSwiper, setMainSwiper] = useState(null);
-  const [selectedSlide, setSelectedSlide] = useState(null);
-
   return (
-    <SwiperContext.Provider
-      value={{
-        mainSwiper,
-        setMainSwiper,
-        selectedSlide,
-        setSelectedSlide
-      }}
-    >
+    <>
       <MottoBox/>
-      <Box>
-        <IntroBox/>
-      </Box>
-      <Box>
-        <ProjectList/>
-      </Box>
       <Box>
         <PortfolioBoxes/>
       </Box>
-    </SwiperContext.Provider>
+    </>
   );
 }
 
 function HomeBoxes() {
   return (
-    <Box sx={{ flexGrow: 1}}>
-      <Grid container spacing={2}>
+    <Box sx={{ flexGrow: 1, pb: { xs: 2, md: 4 } }}>
+      <Grid container spacing={{ xs: 2, md: 3 }}>
 
-        <Grid size={{ xs: 12, md: 4 }}> 
+        <Grid size={{ xs: 12, md: 4 }}>
           <LeftBox/>
         </Grid>
 

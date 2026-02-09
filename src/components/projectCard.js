@@ -1,54 +1,48 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Box from '@mui/material/Box';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import StyledPaper from './styledPaper';
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-}));
 export default function ReviewCard({title, subheader, image, description, techStack, expandDescription, githubURL}) {
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
 
   return (
-    <StyledPaper>
+    <StyledPaper sx={{ height: '100%', display: 'flex' }}>
       <Card
         sx={{
           width: '100%',
-          backgroundColor: (theme) => theme.palette.background.default,
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          backgroundColor: (theme) => theme.palette.background.paper,
         }}
       >
         <CardHeader
           sx={{ textAlign: 'center' }}
           title={title}
           subheader={techStack}
+          titleTypographyProps={{
+            sx: { fontWeight: 600, letterSpacing: '0.01em' },
+          }}
+          subheaderTypographyProps={{
+            sx: { color: 'text.secondary' },
+          }}
         />
         <Box
           sx={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            background: '#fff',
+            background: (theme) =>
+              theme.palette.mode === 'dark'
+                ? 'rgba(255, 255, 255, 0.04)'
+                : 'rgba(15, 76, 129, 0.05)',
             height: '40vh',
             overflow: 'hidden',
           }}
@@ -68,7 +62,7 @@ export default function ReviewCard({title, subheader, image, description, techSt
             }}
           />
         </Box>
-        <CardContent>
+        <CardContent sx={{ flexGrow: 1 }}>
           <Typography
             variant="body2"
             sx={{ color: 'text.secondary', textAlign: 'justify' }}
@@ -76,62 +70,18 @@ export default function ReviewCard({title, subheader, image, description, techSt
             {description}
           </Typography>
         </CardContent>
-        <CardActions disableSpacing sx={{ padding: '1rem 1rem 1rem 1rem' }}>
+        <CardActions sx={{ padding: '1rem', marginTop: 'auto' }}>
           <IconButton
             aria-label="github"
             component="a"
             href={githubURL}
             target="_blank"
             rel="noopener noreferrer"
+            sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main' } }}
           >
             <GitHubIcon />
           </IconButton>
-          <Box
-            sx={{
-              display: 'flex',
-              flexGrow: 1,
-              justifyContent: 'flex-end',
-              alignItems: 'center',
-            }}
-          >
-            <Box
-              sx={{
-                flexWrap: 'nowrap',
-                display: 'flex',
-                alignItems: 'center',
-              }}
-            >
-              <Typography noWrap sx={{ mr: 1, color: 'text.secondary' }}>
-                Read more
-              </Typography>
-              <ExpandMore
-                expand={expanded}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="show more"
-                label="Show More"
-              >
-                <ExpandMoreIcon />
-              </ExpandMore>
-            </Box>
-          </Box>
         </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography
-              sx={{
-                marginBottom: '0.5rem',
-                color: 'text.secondary',
-                textAlign: 'justify',
-              }}
-            >
-              {subheader}
-            </Typography>
-            <Typography sx={{ textAlign: 'justify' }}>
-              {expandDescription}
-            </Typography>
-          </CardContent>
-        </Collapse>
       </Card>
     </StyledPaper>
   );

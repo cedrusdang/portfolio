@@ -8,7 +8,7 @@ import { copyright } from "../data/copyRight.js";
 
 export default function BottomBar() {
     const theme = useTheme();
-    const steelBlue = "#4682B4";
+    const steelBlue = theme.palette.primary.main;
 
     const handleToTop = (e) => {
         e.preventDefault();
@@ -18,10 +18,10 @@ export default function BottomBar() {
     return (
         <Box sx={{
             width: "100%",
-            backgroundColor: theme.palette.background.default,
+            backgroundColor: theme.palette.background.paper,
             textAlign: "center",
             padding: { xs: '0.25rem', sm: '1rem' },
-            boxShadow: 3,
+            borderTop: `1px solid ${theme.palette.divider}`,
         }}>
             <Box>
                 <Typography

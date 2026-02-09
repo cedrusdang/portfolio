@@ -1,79 +1,52 @@
 import { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/navigation';
-import 'swiper/css/thumbs';
 import './portfolioBoxes.css';
-import { FreeMode, Navigation, Thumbs, Autoplay } from 'swiper/modules';
 import Box from '@mui/material/Box';
 import ReviewCard from './projectCard.js';
 import projects from '../data/projects.js';
-import { SwiperContext } from '../views/home.js';
-
-import { useContext } from 'react';
 
 export default function PortfolioBoxes() {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const { setMainSwiper } = useContext(SwiperContext);
-  // Make the number of slides per view and other options flexible via props or defaults
-  // Accept props for configuration, fallback to sensible defaults
   return (
-    <>
-        <Swiper
-          onSwiper={setMainSwiper}
-          autoplay={{
-            delay: 5000,
-          }}
-          loop={true}
-          spaceBetween={10}
-          navigation={true}
-          thumbs={{ swiper: thumbsSwiper }}
-          modules={[FreeMode, Navigation, Thumbs, Autoplay]}
-          className="mySwiper1"
-          // Allow passing additional props if needed
-          {...(typeof window !== "undefined" && window.portfolioSwiperMainProps)}
-        >
-          <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
-            {projects.map((proj, idx) => (
-              <SwiperSlide id={`project-card-${idx}`} key={idx} >
-                <Box elevation={5}  /* Add elevation for 3D effect */
-                  sx={{
-                    transition: 'transform 0.2s ease-in-out',
-                  }}
-                >
-                  <ReviewCard
-                    title={proj.title}
-                    subheader={proj.subheader}
-                    image={proj.image}
-                    description={proj.description}
-                    techStack={proj.techStack}
-                    expandDescription={proj.expandDescription}
-                    githubURL={proj.githubURL}
-                    loading='lazy'
-                  />
-                </Box>
-              </SwiperSlide>
-            ))}
-          </Box>
-        </Swiper>
-      <Swiper
-        onSwiper={setThumbsSwiper}
-        spaceBetween={10}
-        slidesPerView={5} // Flexible slides per view
-        freeMode={true}
-        watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2"
-        // Allow passing additional props if needed
-        {...(typeof window !== "undefined" && window.portfolioSwiperThumbsProps)}
-      >
+    <Box sx={{ 
+      width: '100%', 
+      padding: '0',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '1rem',
+    }}>
         {projects.map((proj, idx) => (
-          <SwiperSlide key={idx}>
-            <img src={proj.image} alt={proj.image} className="thumb-image" loading='lazy'/>
-          </SwiperSlide>
+          <Box key={idx} sx={{ 
+            width: '100%',
+            maxWidth: '600px',
+            aspectRatio: '1 / 1',
+            display: 'flex',
+          }}>
+            <Box
+              sx={{
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                '&:hover': {
+                  transform: 'translateY(-8px)',
+                  boxShadow: 'var(--shadow-2)',
+                },
+              }}
+            >
+              <ReviewCard
+                title={proj.title}
+                subheader={proj.subheader}
+                image={proj.image}
+                description={proj.description}
+                techStack={proj.techStack}
+                expandDescription={proj.expandDescription}
+                githubURL={proj.githubURL}
+                loading='lazy'
+              />
+            </Box>
+          </Box>
         ))}
-      </Swiper>
-    </>
+    </Box>
   );
 }

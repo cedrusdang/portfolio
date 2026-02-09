@@ -1,1 +1,1 @@
-export const copyright = "© 2025 Cedrus Dang";
+export const copyright = "© 2026 Cedrus Dang";

@@ -1,4 +1,6 @@
 import {useState} from "react";
+import { useTheme } from '@mui/material/styles';
+import { Typography } from '@mui/material';
 import StyledPaper from "./styledPaper.js";
 import { email } from "../data/info.js";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
@@ -17,6 +19,7 @@ export default function MyEmail() {
   const [emailCopied, setEmailCopied] = useState(false);
   const [copied, setCopied] = useState(false);
   const [emailPop, setEmailPop] = useState(false);
+  const theme = useTheme();
 
   const clickHandler = () => {
     copyToClipboard(email);
@@ -34,7 +37,9 @@ export default function MyEmail() {
   return (
     <StyledPaper sx={{ marginTop: "1rem" }}>
       <StyledPaper>
-        <h3 style={{ margin: "0.25rem 0 0.5rem 0" }}>My Email</h3>
+        <Typography variant="h6" sx={{ mb: 0.5, fontWeight: 600 }}>
+          My Email
+        </Typography>
           <div style={{
             display: "flex",
             alignItems: "center",
@@ -72,13 +77,16 @@ export default function MyEmail() {
               </span>
               <span style={{
                 marginLeft: "0.4rem",
-                fontFamily: "'Dancing Script', cursive",
-                borderColor: "main.secondary",
-                borderWidth: "1px",
-                borderStyle: "solid",
-                borderRadius: "16px",
-                padding: "0.1rem 0.5rem 0.1rem 0.5rem",
-                cursor: "pointer"
+                fontFamily: "'Manrope', sans-serif",
+                border: `1px solid ${theme.palette.divider}`,
+                borderRadius: "999px",
+                padding: "0.15rem 0.65rem",
+                cursor: "pointer",
+                backgroundColor:
+                  theme.palette.mode === 'dark'
+                    ? 'rgba(255, 255, 255, 0.06)'
+                    : 'rgba(15, 76, 129, 0.08)',
+                color: theme.palette.text.primary,
               }}
                 onClick={handleButtonClick}
                 title="Click to copy email"

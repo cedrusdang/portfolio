@@ -113,6 +113,8 @@ function SocialIconRework({ url, type, newTab = false }) {
 }
 
 export default function AvatarBox(){
+  const theme = useTheme();
+
   return(
       <StyledPaper>
         <StyledPaper>
@@ -126,12 +128,17 @@ export default function AvatarBox(){
                   height: 'auto',
                   maxWidth: '180px',
                   maxHeight: '180px',
-                  border: '0.2rem solid rgba(17, 62, 241, 0.47)',
-                  boxShadow: '0 0 0 2px rgba(9, 17, 246, 0.76)',
+                  border: `2px solid ${theme.palette.primary.main}`,
+                  boxShadow:
+                    theme.palette.mode === 'dark'
+                      ? '0 0 0 4px rgba(108, 178, 255, 0.25)'
+                      : '0 0 0 4px rgba(15, 76, 129, 0.18)',
                 }}
               />
           </Box>
-          <h2>{ownerName}</h2>
+          <Typography variant="h5" sx={{ mt: 1, fontWeight: 600 }}>
+            {ownerName}
+          </Typography>
           <Box sx={{ textAlign: 'center'}}>
             <Typography sx={{
               margin: '0rem 1rem 0rem 1rem'
