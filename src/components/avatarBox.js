@@ -1,8 +1,6 @@
 import { useTheme  } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import { Typography } from '@mui/material';
-import FileOpenIcon from '@mui/icons-material/FileOpen';
-import Button from '@mui/material/Button';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Box from '@mui/material/Box';
@@ -11,22 +9,6 @@ import StyledPaper from './styledPaper.js';
 import useActiveProfile from '../hooks/useActiveProfile.js';
 
 const AvatarPic = `${process.env.PUBLIC_URL}/images/avatar.jpg`
-
-function ViewResumePDF({ url, sx }) {
-  return (
-    <Button
-      component="a"
-      target="_blank"
-      href={url}
-      rel="noopener noreferrer"
-      variant="contained"
-      startIcon={<FileOpenIcon />}
-      sx= {{marginLeft: '0.5rem', marginRight: '0.5rem'}}
-    >
-      Resume
-    </Button>
-  );
-}
 
 function SocialIconRework({ url, type, newTab = false }) {
     // For light mode
@@ -154,9 +136,6 @@ export default function AvatarBox(){
             justifyContent: 'center',
             flexDirection: 'column',
             margin:'0vh 0 0 0'}}>
-            <Box sx={{margin:'1rem 0 0 0'}}>
-              <ViewResumePDF url={`${process.env.PUBLIC_URL}/resume.pdf`} />
-            </Box>
             <Box sx={{margin:'1rem 0 0 0'}}>
               <SocialIconRework url={GitHubURL} type="github" newTab={true}/>
               <SocialIconRework url={LinkedInURL} type="linkedin" newTab={true}/>

@@ -94,7 +94,7 @@ export const dataScienceProfile = {
   ...sharedLinks,
   topbarIntro: "A Data Scientist and AI Engineer Porfolio",
   pageTitle: "A Data Scientist and AI Engineer Porfolio",
-  leftBoxIntro: "A Data Scientist and AI Engineer Porfolio",
+  leftBoxIntro: "Data Scientist and AI Engineer",
   skillSets: [
     {
       category: "Data Science & AI",
