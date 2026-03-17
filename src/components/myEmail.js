@@ -2,7 +2,7 @@ import {useState} from "react";
 import { useTheme } from '@mui/material/styles';
 import { Typography } from '@mui/material';
 import StyledPaper from "./styledPaper.js";
-import { email } from "../data/info.js";
+import useActiveProfile from '../hooks/useActiveProfile.js';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import MarkEmailReadRoundedIcon from '@mui/icons-material/MarkEmailReadRounded';
@@ -20,6 +20,7 @@ export default function MyEmail() {
   const [copied, setCopied] = useState(false);
   const [emailPop, setEmailPop] = useState(false);
   const theme = useTheme();
+  const { email } = useActiveProfile();
 
   const clickHandler = () => {
     copyToClipboard(email);

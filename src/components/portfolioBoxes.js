@@ -1,9 +1,10 @@
 import './portfolioBoxes.css';
 import Box from '@mui/material/Box';
 import ReviewCard from './projectCard.js';
-import projects from '../data/projects.js';
+import useActiveProfile from '../hooks/useActiveProfile.js';
 
 export default function PortfolioBoxes() {
+  const { projects } = useActiveProfile();
   return (
     <Box sx={{ 
       width: '100%', 
@@ -41,6 +42,7 @@ export default function PortfolioBoxes() {
                 techStack={proj.techStack}
                 expandDescription={proj.expandDescription}
                 githubURL={proj.githubURL}
+                liveURL={proj.liveURL}
                 loading='lazy'
               />
             </Box>

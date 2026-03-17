@@ -8,8 +8,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Box from '@mui/material/Box';
 
 import StyledPaper from './styledPaper.js';
-import {ownerName, GitHubURL, LinkedInURL} from '../data/info.js';
-import { LeftBoxIntro } from '../data/intro.js';
+import useActiveProfile from '../hooks/useActiveProfile.js';
 
 const AvatarPic = `${process.env.PUBLIC_URL}/images/avatar.jpg`
 
@@ -114,6 +113,7 @@ function SocialIconRework({ url, type, newTab = false }) {
 
 export default function AvatarBox(){
   const theme = useTheme();
+  const { ownerName, GitHubURL, LinkedInURL, leftBoxIntro } = useActiveProfile();
 
   return(
       <StyledPaper>
@@ -143,7 +143,7 @@ export default function AvatarBox(){
             <Typography sx={{
               margin: '0rem 1rem 0rem 1rem'
             }}>
-              {LeftBoxIntro}
+              {leftBoxIntro}
             </Typography>
 
           </Box>

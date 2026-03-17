@@ -83,6 +83,7 @@ const projects = [
     techStack:
       "React | JavaScript | HTML | CSS | Figma | State Management | Form Validation | UX/UI Interpretation",
     githubURL: "https://github.com/cedrusdang/portfoliofe",
+    liveURL: "https://portfoliofe.cedrusdang.com/",
   },
 ];
 

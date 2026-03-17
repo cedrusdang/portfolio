@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
-import { mottos } from '../data/intro.js'; 
 import Box from '@mui/material/Box';
+import useActiveProfile from '../hooks/useActiveProfile.js';
 
 function TypingEffect({ text, speed, onPhaseChange }) {
   const [displayed, setDisplayed] = useState('');
@@ -104,6 +104,7 @@ function TypingEffect({ text, speed, onPhaseChange }) {
 
 // Main component to rotate mottos
 export default function RotatingMottos({ speed = 60 }) {
+  const { mottos } = useActiveProfile();
   const [index, setIndex] = useState(0);
 
   // Handler to update index

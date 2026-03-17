@@ -4,8 +4,7 @@ import Box from '@mui/material/Box';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import StyledPaper from './styledPaper.js';
-
-import { skillSets } from '../data/intro.js';
+import useActiveProfile from '../hooks/useActiveProfile.js';
 
 
 import 'swiper/css';
@@ -13,6 +12,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 function SkillsSwiper() {
   const theme = useTheme();
+  const { skillSets } = useActiveProfile();
 
   // Helper to chunk skillSets into pairs
   const skillSetPairs = [];

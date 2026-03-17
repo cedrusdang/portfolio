@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -10,6 +10,17 @@ import GalaxyBackground from "./components/backGround.js";
 import TopAppBar from "./components/topBar.js";
 import About from "./views/home.js";
 import BottomBar from "./components/bottomBar.js";
+import { getProfileByPath } from "./data/profiles.js";
+
+function RouteTitleSync() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    document.title = getProfileByPath(pathname).pageTitle;
+  }, [pathname]);
+
+  return null;
+}
 
 function AppGlobalStyles() {
   const theme = useTheme();
@@ -162,6 +173,7 @@ function App() {
       <CssBaseline />
       <Router basename={process.env.PUBLIC_URL}>
         <AppGlobalStyles />
+        <RouteTitleSync />
 
         <GalaxyBackground />
 
@@ -181,6 +193,7 @@ function App() {
           >
             <Routes>
               <Route path="/" element={<About />} />
+              <Route path="/datascience" element={<About />} />
             </Routes>
           </Box>
 

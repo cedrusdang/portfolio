@@ -6,10 +6,9 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { FormGroup, FormControlLabel, Switch } from '@mui/material';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-import {ownerName} from '../data/info.js';
-import {topbarIntro} from '../data/info.js';
+import useActiveProfile from '../hooks/useActiveProfile.js';
 
 const logoPic = `${process.env.PUBLIC_URL}/images/logo.png`
 
@@ -57,13 +56,13 @@ function TopLogoIcon() {
   );
 }
 
-function TopNameOwner({ isSmall }) {
+function TopNameOwner({ isSmall, ownerName, homePath }) {
   let fontSize = isSmall ? 14 : 22;
   return (
     <Typography
       Wrap
       component={Link}
-      to="/"
+      to={homePath}
       sx={theme => ({
         fontWeight: 700,
         color: theme.palette.text.primary,
@@ -78,7 +77,7 @@ function TopNameOwner({ isSmall }) {
   );
 }
 
-function TopPortfolioIntro() {
+function TopPortfolioIntro({ topbarIntro }) {
   return (
     <Typography
       component="a"
@@ -104,6 +103,11 @@ export default function TopAppBar({darkMode, setDarkMode}) {
 
   const isMedium = useMediaQuery('(max-width:750px)');
   const isSmall = useMediaQuery('(max-width:571px)');
+  const { pathname } = useLocation();
+  const homePath = pathname.toLowerCase().startsWith('/datascience')
+    ? '/datascience'
+    : '/';
+  const { ownerName, topbarIntro } = useActiveProfile();
   return (
     <AppBar
       position="static"
@@ -127,8 +131,8 @@ export default function TopAppBar({darkMode, setDarkMode}) {
       >
         <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1, minWidth: 0 }}>
           <TopLogoIcon />
-          <TopNameOwner isSmall={isSmall} />
-          {!isMedium && <TopPortfolioIntro sx={{ alignItems: 'center' }} />}
+          <TopNameOwner isSmall={isSmall} ownerName={ownerName} homePath={homePath} />
+          {!isMedium && <TopPortfolioIntro topbarIntro={topbarIntro} sx={{ alignItems: 'center' }} />}
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <DarkLightBtn darkMode={darkMode} setDarkMode={setDarkMode} />

@@ -5,12 +5,14 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import StyledPaper from './styledPaper';
 
-export default function ReviewCard({title, subheader, image, description, techStack, expandDescription, githubURL}) {
+export default function ReviewCard({title, subheader, image, description, techStack, expandDescription, githubURL, liveURL}) {
 
   return (
     <StyledPaper sx={{ height: '100%', display: 'flex' }}>
@@ -81,6 +83,20 @@ export default function ReviewCard({title, subheader, image, description, techSt
           >
             <GitHubIcon />
           </IconButton>
+          {liveURL && (
+            <Button
+              component="a"
+              href={liveURL}
+              target="_blank"
+              rel="noopener noreferrer"
+              size="small"
+              variant="outlined"
+              startIcon={<OpenInNewIcon fontSize="small" />}
+              sx={{ ml: 0.75 }}
+            >
+              Live
+            </Button>
+          )}
         </CardActions>
       </Card>
     </StyledPaper>
