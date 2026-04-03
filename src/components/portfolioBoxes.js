@@ -2,6 +2,7 @@ import './portfolioBoxes.css';
 import Box from '@mui/material/Box';
 import ReviewCard from './projectCard.js';
 import useActiveProfile from '../hooks/useActiveProfile.js';
+import { getProjectAnchorId } from '../data/projectAnchors.js';
 
 export default function PortfolioBoxes() {
   const { projects } = useActiveProfile();
@@ -20,8 +21,10 @@ export default function PortfolioBoxes() {
             maxWidth: '600px',
             aspectRatio: '1 / 1',
             display: 'flex',
+            scrollMarginTop: { xs: '84px', md: '96px' },
           }}>
             <Box
+              id={getProjectAnchorId(proj.title)}
               sx={{
                 width: '100%',
                 height: '100%',

@@ -19,8 +19,6 @@ function LeftBox(){
         <SkillsBox/>
       </Box>
       <MyEmail/>
-      <Box sx={{marginTop: '1rem'}}>
-      </Box>
     </>
   );
 }

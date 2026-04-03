@@ -188,7 +188,7 @@ function App() {
               p: { xs: 1.5, md: 3 },
               maxWidth: "lg",
               mx: "auto",
-              mt: { xs: 2, md: 3 },
+              mt: { xs: '4.5rem', md: '5rem' },
             }}
           >
             <Routes>
@@ -210,7 +210,8 @@ function App() {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             sx={{
               position: "fixed",
-              right: { xs: 16, md: 24 },
+              left: "50%",
+              transform: "translateX(-50%)",
               bottom: { xs: 16, md: 24 },
               zIndex: 10,
               boxShadow: "var(--shadow-2)",
