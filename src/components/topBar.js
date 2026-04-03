@@ -117,9 +117,89 @@ const daMainSkillsByTitle = {
   ],
 };
 
+const additionalTechnicalWorkTitles = new Set([
+  'Image Classification with CNNs and MobileNetV3Small',
+  'Explainable Natural Language Query Interface for Relational Databases (Multi-Agent System)',
+  'NovelForger - AI Agent Novelist',
+  'Smart Livestock Tracking System - IoT',
+  'Little Lemon Restaurant - UX Design Principles and React Front-End Application',
+]);
+
+const daMenuOrder = [
+  'Internet Sales Analytics Dashboard',
+  'Queensland Traffic Accidents Analysis (2001–2021)',
+  'Classification and Clustering of Low Birth Weight Mortality',
+  'Data Warehouse Project: Australian Road Fatality 2024',
+  'Graph Database Project: Australian Road Fatality 2024',
+  'Time Series Forecasting: Western Australian Temperature (GRU + VAE)',
+];
+
+const daMenuSubtitleByTitle = {
+  'Internet Sales Analytics Dashboard':
+    'Dashboard: Power BI | KPI Tracking | Data Modelling',
+  'Queensland Traffic Accidents Analysis (2001–2021)':
+    'Interactive Report: Tableau | Data Storytelling | Trend Analysis',
+  'Classification and Clustering of Low Birth Weight Mortality':
+    'Data Advanced Analytics: Statistical Modelling | Predictive Analytics | Risk Segmentation',
+  'Data Warehouse Project: Australian Road Fatality 2024':
+    'Data Infrastructure: Dimensional Modelling | ETL Pipelines | BI Reporting',
+  'Graph Database Project: Australian Road Fatality 2024':
+    'Data Infrastructure: Graph Modelling | Cypher Querying | Relationship Analysis',
+  'Time Series Forecasting: Western Australian Temperature (GRU + VAE)':
+    'Data Forecasting: Deep Learning | Time Series Modelling | Model Evaluation',
+};
+
+const dsMenuOrder = [
+  'Explainable Natural Language Query Interface for Relational Databases (Multi-Agent System)',
+  'Smart Livestock Tracking System - IoT',
+  'Little Lemon Restaurant - UX Design Principles and React Front-End Application',
+  'NovelForger - AI Agent Novelist',
+  'Internet Sales Analytics Dashboard',
+  'Time Series Forecasting: Western Australian Temperature (GRU + VAE)',
+  'Image Classification with CNNs and MobileNetV3Small',
+  'Classification and Clustering of Low Birth Weight Mortality',
+  'Data Warehouse Project: Australian Road Fatality 2024',
+  'Graph Database Project: Australian Road Fatality 2024',
+  'Queensland Traffic Accidents Analysis (2001–2021)',
+];
+
+const dsMenuSubtitleByTitle = {
+  'Explainable Natural Language Query Interface for Relational Databases (Multi-Agent System)':
+    'AI Systems: LangChain | Multi-Agent LLMs | RAG Reasoning',
+  'Smart Livestock Tracking System - IoT':
+    'IoT Systems: GPS + LoRaWAN | AWS IoT Core | Geofencing',
+  'Little Lemon Restaurant - UX Design Principles and React Front-End Application':
+    'Front-End Development: React | State Management | UX/UI Implementation',
+  'NovelForger - AI Agent Novelist':
+    'AI Agents: Gemini API | LangGraph | Multi-Stage Generation',
+  'Time Series Forecasting: Western Australian Temperature (GRU + VAE)':
+    'Deep Learning: GRU Forecasting | VAE Generation | Model Evaluation',
+  'Image Classification with CNNs and MobileNetV3Small':
+    'Computer Vision: CNNs | Transfer Learning | Model Optimisation',
+  'Classification and Clustering of Low Birth Weight Mortality':
+    'Statistical Modelling: Feature Selection | Classification | Clustering',
+  'Internet Sales Analytics Dashboard':
+    'Analytics Engineering: Power BI | Data Modelling | KPI Reporting',
+  'Data Warehouse Project: Australian Road Fatality 2024':
+    'Data Infrastructure: Dimensional Modelling | ETL Pipelines | OLAP',
+  'Graph Database Project: Australian Road Fatality 2024':
+    'Graph Data Systems: Neo4j | Cypher Querying | Relationship Analysis',
+  'Queensland Traffic Accidents Analysis (2001–2021)':
+    'Analytics Reporting: Tableau | Data Storytelling | Trend Analysis',
+};
+
 function ProjectMenu({ pathname, projects }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
+  const isDataSciencePath = pathname.toLowerCase().startsWith('/datascience');
+  const menuProjects = isDataSciencePath
+    ? dsMenuOrder
+      .map((title) => projects.find((project) => project.title === title))
+      .filter(Boolean)
+    : daMenuOrder
+        .map((title) => projects.find((project) => project.title === title))
+        .filter(Boolean)
+        .filter((project) => !additionalTechnicalWorkTitles.has(project.title));
 
   const handleOpen = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
@@ -174,16 +254,21 @@ function ProjectMenu({ pathname, projects }) {
           },
         }}
       >
-        {projects.map((project, index) => {
-          const mainSkills =
-            daMainSkillsByTitle[project.title] ??
-            (project.techStack
-              ? project.techStack
-                  .split('|')
-                  .map((skill) => skill.trim())
-                  .filter(Boolean)
-                  .slice(0, 3)
-              : ['Data Analysis']);
+        {menuProjects.map((project, index) => {
+          const daMenuSubtitle =
+            !isDataSciencePath ? daMenuSubtitleByTitle[project.title] : undefined;
+          const dsMenuSubtitle =
+            isDataSciencePath ? dsMenuSubtitleByTitle[project.title] : undefined;
+          const mappedSkills = daMainSkillsByTitle[project.title];
+          const techStackFallback = project.techStack
+            ? project.techStack
+                .split('|')
+                .map((skill) => skill.trim())
+                .filter(Boolean)
+                .slice(0, 3)
+                .join(' | ')
+            : 'Data Analysis';
+          const mainSkills = dsMenuSubtitle || daMenuSubtitle || mappedSkills || techStackFallback;
           return (
             <MenuItem
               key={project.title}
@@ -199,7 +284,7 @@ function ProjectMenu({ pathname, projects }) {
                   {`${index + 1}. ${project.title}`}
                 </Typography>
                 <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                  {mainSkills.slice(0, 3).join(' | ')}
+                  {Array.isArray(mainSkills) ? mainSkills.slice(0, 3).join(' | ') : mainSkills}
                 </Typography>
               </Box>
             </MenuItem>

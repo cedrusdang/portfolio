@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import PortfolioBoxes from '../components/portfolioBoxes.js';
 import AvatarBox from '../components/avatarBox.js';
 import SkillsBox from '../components/skillsBox.js';
+import IntroBox from '../components/introBox.js';
 import MottoBox from '../components/mottoBox.js';
 import MyEmail from '../components/myEmail.js';
 
@@ -27,6 +28,7 @@ function RightBox(){
   return (
     <>
       <MottoBox/>
+      <IntroBox/>
       <Box>
         <PortfolioBoxes/>
       </Box>
