@@ -13,6 +13,7 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import StyledPaper from './styledPaper';
 
 export default function ReviewCard({title, subheader, image, description, techStack, expandDescription, githubURL, liveURL}) {
+  const isPowerBiLiveUrl = typeof liveURL === 'string' && liveURL.includes('app.powerbi.com');
 
   return (
     <StyledPaper sx={{ height: '100%', display: 'flex' }}>
@@ -73,16 +74,18 @@ export default function ReviewCard({title, subheader, image, description, techSt
           </Typography>
         </CardContent>
         <CardActions sx={{ padding: '1rem', marginTop: 'auto' }}>
-          <IconButton
-            aria-label="github"
-            component="a"
-            href={githubURL}
-            target="_blank"
-            rel="noopener noreferrer"
-            sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main' } }}
-          >
-            <GitHubIcon />
-          </IconButton>
+          {githubURL && (
+            <IconButton
+              aria-label="github"
+              component="a"
+              href={githubURL}
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main' } }}
+            >
+              <GitHubIcon />
+            </IconButton>
+          )}
           {liveURL && (
             <Button
               component="a"
@@ -92,9 +95,38 @@ export default function ReviewCard({title, subheader, image, description, techSt
               size="small"
               variant="outlined"
               startIcon={<OpenInNewIcon fontSize="small" />}
-              sx={{ ml: 0.75 }}
+              sx={{
+                ml: 0.75,
+                ...(isPowerBiLiveUrl
+                  ? {
+                      borderWidth: 1.5,
+                      fontWeight: 700,
+                      letterSpacing: '0.01em',
+                      borderColor: (theme) =>
+                        theme.palette.mode === 'dark' ? '#6cb2ff' : '#0f4c81',
+                      color: (theme) =>
+                        theme.palette.mode === 'dark' ? '#cde6ff' : '#0f4c81',
+                      backgroundColor: (theme) =>
+                        theme.palette.mode === 'dark'
+                          ? 'rgba(108, 178, 255, 0.12)'
+                          : 'rgba(15, 76, 129, 0.08)',
+                      boxShadow: 'none',
+                      '&:hover': {
+                        borderColor: (theme) =>
+                          theme.palette.mode === 'dark' ? '#8ec6ff' : '#124f86',
+                        color: (theme) =>
+                          theme.palette.mode === 'dark' ? '#e7f2ff' : '#124f86',
+                        backgroundColor: (theme) =>
+                          theme.palette.mode === 'dark'
+                            ? 'rgba(108, 178, 255, 0.2)'
+                            : 'rgba(15, 76, 129, 0.14)',
+                        boxShadow: 'var(--shadow-1)',
+                      },
+                    }
+                  : {}),
+              }}
             >
-              Live
+              {isPowerBiLiveUrl ? 'View Online Power BI App' : 'Live'}
             </Button>
           )}
         </CardActions>

@@ -10,6 +10,7 @@ const sharedLinks = {
 
 const defaultProjectOrder = [
   // Analysing first
+  "Internet Sales Analytics Dashboard",
   "Queensland Traffic Accidents Analysis (2001-2021)",
   "Queensland Traffic Accidents Analysis (2001–2021)",
   "Classification and Clustering of Low Birth Weight Mortality",
@@ -26,8 +27,17 @@ const defaultProjectOrder = [
   "Little Lemon Restaurant - UX Design Principles and React Front-End Application",
 ];
 
+const hiddenInMainPortfolioTitles = new Set([
+  "Image Classification with CNNs and MobileNetV3Small",
+  "Explainable Natural Language Query Interface for Relational Databases (Multi-Agent System)",
+  "NovelForger - AI Agent Novelist",
+  "Smart Livestock Tracking System - IoT",
+  "Little Lemon Restaurant - UX Design Principles and React Front-End Application",
+]);
+
 const defaultProjects = defaultProjectOrder
   .map((title) => baseProjects.find((project) => project.title === title))
+  .filter((project) => project && !hiddenInMainPortfolioTitles.has(project.title))
   .filter(Boolean);
 
 const dataScienceProjectOrder = [
@@ -40,6 +50,7 @@ const dataScienceProjectOrder = [
   "Time Series Forecasting: Western Australian Temperature (GRU + VAE)",
   "Image Classification with CNNs and MobileNetV3Small",
   "Classification and Clustering of Low Birth Weight Mortality",
+  "Internet Sales Analytics Dashboard",
   // DE projects
   "Data Warehouse Project: Australian Road Fatality 2024",
   "Graph Database Project: Australian Road Fatality 2024",

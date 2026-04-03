@@ -26,6 +26,15 @@ const projects = [
     githubURL: "https://github.com/cedrusdang/DataStoryTelling",
   },
   {
+    title: "Internet Sales Analytics Dashboard",
+    image: `${process.env.PUBLIC_URL}/projectImages/InternetSalesAnalystics.png`,
+    description:
+      "Internet Sales Analytics is a multi-page Power BI dashboard designed to provide a comprehensive view of business performance across sales, customer behavior, promotions, and inventory. The dashboard enables stakeholders to monitor key KPIs, explore demographic breakdowns, assess the impact of discount strategies, and track inventory trends - all through an intuitive and interactive interface with dynamic filtering by year and country. This project demonstrates proficiency in data modeling, DAX calculations, and UI/UX design within Power BI.",
+    techStack: "Power BI | Data Modelling | Interactive Dashboards | KPI Reporting",
+    liveURL:
+      "https://app.powerbi.com/view?r=eyJrIjoiMDUzYzA5MWEtNzU5NS00YWUyLWIzMTEtNDU2NWM4ZWE2M2NiIiwidCI6IjMxOTliMzA0LTg4ZmEtNDVkMC1hNWM4LWE2ZTc5OTFmMmQwYyJ9&pageName=ReportSection",
+  },
+  {
     title: "Classification and Clustering of Low Birth Weight Mortality",
     image: `${process.env.PUBLIC_URL}/projectImages/cdaproject.png`,
     description:
